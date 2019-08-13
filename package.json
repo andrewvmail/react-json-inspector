@@ -41,6 +41,6 @@
   "scripts": {
     "test": "mocha test/**/*-spec.js",
     "server": "http-server .",
-    "watch": "watchify example/app.js -o example/app.compiled.js -v"
+    "watch": "watchify docs/app.js -o docs/app.compiled.js -v"
   }
 }
