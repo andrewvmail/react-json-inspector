@@ -5,15 +5,16 @@ var Inspector = require('..');
 var InteractiveSelection = require('./interactive-selection');
 
 var h = React.createElement;
-var data = require('./data.json');
 
-document.addEventListener('DOMContentLoaded', function() {
-    render(
+var webSocket = new WebSocket('ws://localhost:8080');
+webSocket.onmessage = ({data}) => {
+	 render(
         h(Inspector, {
-            data: data,
+            data: JSON.parse(data),
             onClick: console.log.bind(console),
-            interactiveLabel: InteractiveSelection
+            interactiveLabel: InteractiveSelection,
+            isExpanded: () => true,
         }),
         document.getElementById('inspector')
     );
-});
+}
